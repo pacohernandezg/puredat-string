@@ -1,34 +1,102 @@
 <link rel="import" href="../polymer/polymer.html">
-
+<link rel="import" href="../paper-input/paper-input.html">
 <!--
-`puredat-string`
-
-
-@demo demo/index.html 
+	`puredat-string` Componente de edición de atributos de tipo "STRING".
+	
+	@demo demo/index.html 
 -->
-
 <dom-module id="puredat-string">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]</h2>
-  </template>
-
-  <script>
-    Polymer({
-
-      is: 'puredat-string',
-
-      properties: {
-        prop1: {
-          type: String,
-          value: 'puredat-string',
-        },
-      },
-
-    });
-  </script>
+	<template>
+		<style>
+			paper-input {
+				--paper-input-container: {
+					padding-right: 10px;
+				}
+			}
+		</style>
+		
+		<paper-input
+				type="text" 
+				minlength="[[minLength]]" 
+				maxlength="[[maxLength]]" 
+				required$="[[required]]" 
+				allowed-pattern="[[pattern]]"
+				label="[[label]]" 
+				value="{{value}}" 
+				error-message="[[errorMessage]]"
+				invalid="[[_isInvalid(errorMessage)]]"
+				always-float-label>
+		</paper-input>
+	</template> 
+	
+	<script>
+		Polymer({
+			is: 'puredat-string',
+			
+			properties: {
+				
+				/** Minimum length */
+				minLength: {
+					type: Number,
+					value: 0
+				},
+				
+				/** Maximum length */
+				maxLength: {
+					type: Number,
+					value: 100
+				},
+				
+				/** Required */
+				required: {
+					type: Boolean,
+					value: false
+				},
+				
+				/** Pattern */
+				pattern: {
+					type: String
+				},
+				
+				/** Descriptive label. */
+				label: {
+					type: String,
+					value: "Label"
+				},
+				
+				/** Value */
+				value: {
+					type: String
+				},
+				
+				/** Error message */
+				errorMessage: {
+					type: String
+				},
+				
+				/** Columns */
+				cols: {
+					type: Number,
+					value: 5,
+					observer: '_colsChanged'
+				}
+			},
+			
+			_colsChanged: function(newValue, oldValue) {
+console.log(newValue + ", " + oldValue);
+				this.style.minWidth = (50 * newValue) + "px";
+				this.style.flex = (10 * newValue) + "%";
+			},
+			
+			/**
+			 * Returns if the field is valid.
+			 * @param {String} errorMessage The error message.
+			 * @return {Boolean} If the input field is valid.
+			 */
+			_isInvalid: function(errorMessage) {
+				return errorMessage != null
+						&& errorMessage != "";
+			}
+		});
+	</script>
 </dom-module>
