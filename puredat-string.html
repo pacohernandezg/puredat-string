@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-input/paper-input.html">
 <!--
-	`puredat-string` Componente de edición de atributos de tipo "STRING".
+	`puredat-string` "STRING" type, "ONE" cardinality widget.
 	
 	@demo demo/index.html 
 -->
@@ -23,15 +23,21 @@
 				value="{{value}}" 
 				error-message="[[errorMessage]]"
 				invalid="[[_isInvalid(errorMessage)]]"
+				readonly$="[[readOnly]]"
 				always-float-label>
 		</paper-input>
-	</template> 
+	</template>
 	
 	<script>
 		Polymer({
 			is: 'puredat-string',
 			
 			properties: {
+				
+				/** Name */
+				name: {
+					type: String
+				},
 				
 				/** Maximum length. */
 				maxLength: {
@@ -65,6 +71,12 @@
 					type: Number,
 					value: 5,
 					observer: '_colsChanged'
+				},
+				
+				/** Read only. */
+				readOnly: {
+					type: Boolean,
+					value: false
 				}
 			},
 			

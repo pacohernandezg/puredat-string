@@ -20,7 +20,7 @@
 			<h3>Basic puredat-string Demo</h3>
 			<demo-snippet> 
 				<template> 
-					<puredat-string>
+					<puredat-string name="testField">
 					</puredat-string> 
 				</template> 
 			</demo-snippet>
@@ -70,6 +70,15 @@
 							document.getElementById("test").value = "Test";
 						}
 					</script>
+				</template>
+			</demo-snippet>
+		</div>
+		<div class="vertical-section-container centered">
+			<h3>Read only / disabled</h3>
+			<demo-snippet> 
+				<template> 
+					<puredat-string read-only value="Try to change this value">
+					</puredat-string> 
 				</template>
 			</demo-snippet>
 		</div>
