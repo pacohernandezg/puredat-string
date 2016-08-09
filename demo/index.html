@@ -9,7 +9,7 @@
 		
 		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-		
+		<link rel="import" href="../../paper-button/paper-button.html">
 		<link rel="import" href="../puredat-string.html">
 		
 		<style is="custom-style" include="demo-pages-shared-styles">
@@ -30,19 +30,47 @@
 			<demo-snippet>
 				<template>
 					<div style="display: flex">
-						<puredat-string
-								min-length="3"
+						<puredat-string id="errorField"
 								max-length="5"
-								required
 								label="Just a string test"
 								cols="2"
-								value="XAU"
-								error-message="Guau">
+								value="XAU">
 						</puredat-string>
 						<puredat-string cols="8" pattern="[A-Za-z]">
 						</puredat-string>
 					</div>
+					<paper-button onclick="setErrorMessageClickHandler(event)">Set error message</paper-button>
+					<paper-button onclick="resetErrorMessageClickHandler(event)">Reset error message</paper-button>
+					<script>
+						function setErrorMessageClickHandler(event) {
+							document.getElementById("errorField").errorMessage = "Error message";
+						}
+						
+						function resetErrorMessageClickHandler(event) {
+							document.getElementById("errorField").errorMessage = null;
+						}
+					</script>
 				</template> 
+			</demo-snippet>
+		</div>
+		<div class="vertical-section-container centered">
+			<h3>Get / Set value</h3>
+			<demo-snippet> 
+				<template> 
+					<puredat-string id="test">
+					</puredat-string> 
+					<paper-button onclick="getValueClickHandler(event)">Get value</paper-button>
+					<paper-button onclick="setValueClickHandler(event)">Set value</paper-button>
+					<script>
+						function getValueClickHandler(event) {
+							alert(document.getElementById("test").value);
+						}
+					
+						function setValueClickHandler(event) {
+							document.getElementById("test").value = "Test";
+						}
+					</script>
+				</template>
 			</demo-snippet>
 		</div>
 	</body>

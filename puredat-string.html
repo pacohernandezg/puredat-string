@@ -17,9 +17,7 @@
 		
 		<paper-input
 				type="text" 
-				minlength="[[minLength]]" 
 				maxlength="[[maxLength]]" 
-				required$="[[required]]" 
 				allowed-pattern="[[pattern]]"
 				label="[[label]]" 
 				value="{{value}}" 
@@ -35,47 +33,34 @@
 			
 			properties: {
 				
-				/** Minimum length */
-				minLength: {
-					type: Number,
-					value: 0
-				},
-				
-				/** Maximum length */
+				/** Maximum length. */
 				maxLength: {
 					type: Number,
 					value: 100
 				},
 				
-				/** Required */
-				required: {
-					type: Boolean,
-					value: false
-				},
-				
-				/** Pattern */
+				/** Allowed pattern. For example: [a-zA-Z]. */
 				pattern: {
 					type: String
 				},
 				
 				/** Descriptive label. */
 				label: {
-					type: String,
-					value: "Label"
+					type: String
 				},
 				
-				/** Value */
+				/** Value. */
 				value: {
 					type: String,
 					notify: true
 				},
 				
-				/** Error message */
+				/** Error message. */
 				errorMessage: {
 					type: String
 				},
 				
-				/** Columns */
+				/** Number of columns in a row of 10 columns. */
 				cols: {
 					type: Number,
 					value: 5,
