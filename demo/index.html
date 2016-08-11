@@ -17,69 +17,52 @@
 	</head>
 	<body>
 		<div style="max-width: 1000px" class="vertical-section-container centered">
-			<h3>Basic puredat-string Demo</h3>
-			<demo-snippet> 
-				<template> 
-					<puredat-string name="testField">
-					</puredat-string> 
-				</template> 
-			</demo-snippet>
-		</div>
-		<div style="max-width: 1000px" class="vertical-section-container centered">
-			<h3>Basic attributes</h3>
+			<h3>puredat-string demo</h3>
 			<demo-snippet>
 				<template>
 					<div style="display: flex">
-						<puredat-string id="errorField"
+						<puredat-string 
+								id="field1"
+								name="field1"
 								max-length="5"
 								label="Just a string test"
 								cols="2"
-								value="XAU">
+								value="XAU"
+								pattern="[A-Za-z]">
 						</puredat-string>
-						<puredat-string cols="8" pattern="[A-Za-z]">
+						
+						<puredat-string
+								name="field2" 
+								cols="8" 
+								read-only 
+								value="Try to change this value">
 						</puredat-string>
 					</div>
+					
 					<paper-button onclick="setErrorMessageClickHandler(event)">Set error message</paper-button>
 					<paper-button onclick="resetErrorMessageClickHandler(event)">Reset error message</paper-button>
+					
+					<paper-button onclick="getValueClickHandler(event)">Get value</paper-button>
+					<paper-button onclick="setValueClickHandler(event)">Set value</paper-button>
+					
 					<script>
 						function setErrorMessageClickHandler(event) {
-							document.getElementById("errorField").errorMessage = "Error message";
+							document.getElementById("field1").errorMessage = "Error message";
 						}
 						
 						function resetErrorMessageClickHandler(event) {
-							document.getElementById("errorField").errorMessage = null;
+							document.getElementById("field1").errorMessage = null;
 						}
-					</script>
-				</template> 
-			</demo-snippet>
-		</div>
-		<div style="max-width: 1000px" class="vertical-section-container centered">
-			<h3>Get / Set value</h3>
-			<demo-snippet> 
-				<template> 
-					<puredat-string id="test">
-					</puredat-string> 
-					<paper-button onclick="getValueClickHandler(event)">Get value</paper-button>
-					<paper-button onclick="setValueClickHandler(event)">Set value</paper-button>
-					<script>
+						
 						function getValueClickHandler(event) {
-							alert(document.getElementById("test").value);
+							alert(document.getElementById("field1").value);
 						}
 						
 						function setValueClickHandler(event) {
-							document.getElementById("test").value = "Test";
+							document.getElementById("field1").value = "GBP";
 						}
 					</script>
-				</template>
-			</demo-snippet>
-		</div>
-		<div style="max-width: 1000px" class="vertical-section-container centered">
-			<h3>Read only / disabled</h3>
-			<demo-snippet> 
-				<template> 
-					<puredat-string read-only value="Try to change this value">
-					</puredat-string> 
-				</template>
+				</template> 
 			</demo-snippet>
 		</div>
 	</body>
