@@ -23,6 +23,8 @@
 					allowed-pattern="[[pattern]]"
 					label="[[label]]" 
 					value="{{value}}" 
+					rows="[[rows]]"
+					max-rows="[[maxRows]]"
 					error-message="[[errorMessage]]"
 					invalid="[[_isInvalid(errorMessage)]]"
 					readonly$="[[readOnly]]"
@@ -59,6 +61,16 @@
 				multiLine: {
 					type: Boolean,
 					value: false
+				},
+				
+				rows: {
+					type: Number,
+					value: 5
+				},
+				
+				maxRows: {
+					type: Number, 
+					value: 10
 				},
 				
 				/** Maximum length. */
