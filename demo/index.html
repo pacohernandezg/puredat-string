@@ -33,10 +33,22 @@
 						
 						<puredat-string
 								name="field2" 
-								cols="8" 
+								cols="3" 
 								read-only 
 								value="Try to change this value">
 						</puredat-string>
+						
+						<puredat-string 
+								id="field3"
+								name="field3"
+								multi-line
+								max-length="5000"
+								label="A multi-line test"
+								cols="5"
+								value="This is just a multi-line text"
+								pattern="[A-Za-z]">
+						</puredat-string>
+						
 					</div>
 					
 					<paper-button onclick="setErrorMessageClickHandler(event)">Set error message</paper-button>
@@ -44,6 +56,12 @@
 					
 					<paper-button onclick="getValueClickHandler(event)">Get value</paper-button>
 					<paper-button onclick="setValueClickHandler(event)">Set value</paper-button>
+					
+					<paper-button onclick="setErrorMessageClickHandlerML(event)">Set error message (ML)</paper-button>
+					<paper-button onclick="resetErrorMessageClickHandlerML(event)">Reset error message (ML)</paper-button>
+					
+					<paper-button onclick="getValueClickHandlerML(event)">Get value (ML)</paper-button>
+					<paper-button onclick="setValueClickHandlerML(event)">Set value (ML)</paper-button>
 					
 					<script>
 						function setErrorMessageClickHandler(event) {
@@ -60,6 +78,22 @@
 						
 						function setValueClickHandler(event) {
 							document.getElementById("field1").value = "GBP";
+						}
+						
+						function setErrorMessageClickHandlerML(event) {
+							document.getElementById("field3").errorMessage = "Error message";
+						}
+						
+						function resetErrorMessageClickHandlerML(event) {
+							document.getElementById("field3").errorMessage = null;
+						}
+						
+						function getValueClickHandlerML(event) {
+							alert(document.getElementById("field3").value);
+						}
+						
+						function setValueClickHandlerML(event) {
+							document.getElementById("field3").value = "This is a test";
 						}
 					</script>
 				</template> 

@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-input/paper-input.html">
+<link rel="import" href="../paper-input/paper-textarea.html">
 <!--
 	`puredat-string` "STRING" type, "ONE" cardinality widget.
 	
@@ -15,17 +16,32 @@
 			}
 		</style>
 		
-		<paper-input
-				type="text" 
-				maxlength="[[maxLength]]" 
-				allowed-pattern="[[pattern]]"
-				label="[[label]]" 
-				value="{{value}}" 
-				error-message="[[errorMessage]]"
-				invalid="[[_isInvalid(errorMessage)]]"
-				readonly$="[[readOnly]]"
-				always-float-label>
-		</paper-input>
+		<template is="dom-if" if="[[multiLine]]">
+			<paper-textarea
+					type="text" 
+					maxlength="[[maxLength]]" 
+					allowed-pattern="[[pattern]]"
+					label="[[label]]" 
+					value="{{value}}" 
+					error-message="[[errorMessage]]"
+					invalid="[[_isInvalid(errorMessage)]]"
+					readonly$="[[readOnly]]"
+					always-float-label>
+			</paper-textarea>
+		</template>
+		<template is="dom-if" if="[[!multiLine]]">
+			<paper-input
+					type="text" 
+					maxlength="[[maxLength]]" 
+					allowed-pattern="[[pattern]]"
+					label="[[label]]" 
+					value="{{value}}" 
+					error-message="[[errorMessage]]"
+					invalid="[[_isInvalid(errorMessage)]]"
+					readonly$="[[readOnly]]"
+					always-float-label>
+			</paper-input>
+		</template>
 	</template>
 	
 	<script>
@@ -37,6 +53,12 @@
 				/** Name */
 				name: {
 					type: String
+				},
+				
+				/** Multi-line. */
+				multiLine: {
+					type: Boolean,
+					value: false
 				},
 				
 				/** Maximum length. */
